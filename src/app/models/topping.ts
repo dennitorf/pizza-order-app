@@ -1,5 +1,6 @@
 export interface Topping {
     id : string; 
-    name: string; 
+    description: string; 
     doubleCountForOffers : boolean; 
+    toppingTypeId : string;
 }
