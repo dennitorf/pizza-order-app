@@ -3,4 +3,5 @@ export interface Topping {
     description: string; 
     doubleCountForOffers : boolean; 
     toppingTypeId : string;
+    price: number;
 }
