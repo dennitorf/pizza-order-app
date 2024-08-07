@@ -12,7 +12,7 @@
           <div class="pizza-size-selector">
             <ng-container *ngFor="let size of sizes">
               <input type="radio" id="{{ size.id }}" formControlName="size" value="{{ size.id }}" />
-              <label for="{{ size.id }}">{{ size.description }} - ${{ size.price }}</label>
+              <label for="{{ size.id }}">{{ size.description }} <br/> {{ size.price | currency: 'CAD' }}</label>
             </ng-container>
           </div>
         </div>
@@ -26,7 +26,7 @@
             <ng-container *ngFor="let topping of toppings">
               <input type="checkbox" id="{{ topping.id }}" (change)="onToppingChange($event, topping)" />
               <label for="{{ topping.id }}" [ngClass]="{'veg': topping.toppingTypeId === 'veg', 'non-veg': topping.toppingTypeId === 'non-veg'}">
-                {{ topping.description }} <br/> ${{ topping.price }}
+                {{ topping.description }} <br/> {{ topping.price | currency: 'CAD' }}
               </label>
             </ng-container>
           </div>
