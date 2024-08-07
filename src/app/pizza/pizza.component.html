@@ -1,1 +1,41 @@
-<p>pizza works!</p>
+<div class="pizza-system">
+    <div class="row">
+      <h1>{{ titleSystem }}</h1>
+    </div>
+  
+    <form [formGroup]="pizzaForm">
+      <div class="row">
+        <h2>{{ titleSize }}</h2>
+      </div>
+      <div class="row">
+        <div class="pizza-size-selector-container">
+          <div class="pizza-size-selector">
+            <ng-container *ngFor="let size of sizes">
+              <input type="radio" id="{{ size.id }}" formControlName="size" value="{{ size.id }}" />
+              <label for="{{ size.id }}">{{ size.description }} - ${{ size.price }}</label>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <h2>{{ titleTopping}}</h2>
+      </div>
+      <div class="row">
+        <div class="pizza-topping-selector-container">
+          <div class="pizza-topping-selector">
+            <ng-container *ngFor="let topping of toppings">
+              <input type="checkbox" id="{{ topping.id }}" (change)="onToppingChange($event, topping)" />
+              <label for="{{ topping.id }}" [ngClass]="{'veg': topping.toppingTypeId === 'veg', 'non-veg': topping.toppingTypeId === 'non-veg'}">
+                {{ topping.description }} <br/> ${{ topping.price }}
+              </label>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <button type="button" (click)="addPizzaToCart()">Add Pizza</button>
+      </div>
+    </form>
+  </div>
+  

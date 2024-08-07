@@ -1,0 +1,103 @@
+.pizza-system {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.row {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.pizza-system h2 {
+    margin-bottom: 20px; /* Space between the title and the buttons */
+}
+
+.pizza-size-selector-container,
+.pizza-topping-selector-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.pizza-size-selector {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px; /* Space between the buttons */
+    max-width: 600px; /* Adjust as needed */
+    margin: 0 auto;
+}
+
+.pizza-topping-selector {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px; /* Space between the buttons */
+    max-width: 600px; /* Adjust as needed */
+    margin: 0 auto;
+}
+
+.pizza-size-selector input[type="radio"],
+.pizza-topping-selector input[type="checkbox"] {
+    display: none;
+}
+
+.pizza-size-selector label,
+.pizza-topping-selector label {
+    display: inline-block;
+    width: 130px; /* Set a fixed width */
+    padding: 10px 20px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    text-align: center; /* Center text inside label */
+    transition: background-color 0.3s ease;
+}
+
+.pizza-size-selector input[type="radio"]:checked + label {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pizza-topping-selector input[type="checkbox"]:checked + label {
+    border-color: #007bff;
+}
+
+.pizza-topping-selector label.veg {
+    background-color: rgb(193, 211, 193); /* Green for Veg */
+}
+
+.pizza-topping-selector label.non-veg {
+    background-color: rgb(216, 183, 159); /* Brown for Non-Veg */
+}
+
+.pizza-topping-selector input[type="checkbox"]:checked + label.veg {
+    background-color: darkgreen; /* Stronger green for selected Veg */
+    color: white;
+}
+
+.pizza-topping-selector input[type="checkbox"]:checked + label.non-veg {
+    background-color: #5d2b07; /* Stronger brown for selected Non-Veg */
+    color: white;
+}
+
+.pizza-size-selector label:hover,
+.pizza-topping-selector label:hover {
+    background-color: #ddd;
+}
+
+.pizza-system button {
+    padding: 15px 30px;
+    font-size: 1em;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.pizza-system button:hover {
+    background-color: #ff4c3b;
+}
