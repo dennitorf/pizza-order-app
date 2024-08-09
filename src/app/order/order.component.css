@@ -1,0 +1,124 @@
+/* General table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table caption {
+    caption-side: top; /* Position the caption above the table (default) */
+    font-size: 1.5em; /* Increase the font size */
+    font-weight: bold; /* Make the caption bold */
+    text-align: center; /* Center align the caption */
+    margin-bottom: 10px; /* Add some space between the caption and the table */
+    color: #333; /* Set a dark color for the text */
+    background-color: #f0f0f0; /* Add a background color */
+    padding: 10px; /* Add padding around the caption */
+    border-radius: 5px; /* Round the corners */
+    border: 1px solid #ccc; /* Add a border */
+}
+
+
+/* Header styling */
+thead th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    padding: 8px;
+}
+
+/* Row styling */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+tbody th {
+    text-align: left;
+    padding: 8px;
+}
+
+/* Border styling */
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+/* Hover effect for rows */
+tbody tr:hover {
+    background-color: #ddd;
+}
+
+/* Responsive styling */
+@media screen and (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tbody tr {
+        margin-bottom: 15px;
+    }
+
+    tbody th {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tbody th::before {
+        content: attr(data-label);
+        font-weight: bold;
+        width: 50%;
+        padding-right: 10px;
+        box-sizing: border-box;
+    }
+}
+
+.summary-container {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    max-width: 400px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.summary-item:last-child {
+    border-bottom: none; /* Remove the border from the last item */
+}
+
+.summary-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.summary-value {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.final-total .summary-value {
+    font-size: 1.2em;
+    color: #28a745; /* Green color for the final total */
+}
+
+.final-total .summary-label {
+    font-size: 1.2em;
+    color: #28a745; /* Matching green color for the label */
+}
+
