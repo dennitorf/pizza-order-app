@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Size } from '../models/size';
-import { SIZE_DATA } from './static-data';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment.development';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class SizesService {
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getAllSizes() : Size[] {
-    return SIZE_DATA;
+  getSizes(): Observable<Size[]>{
+    return this.http.get<Size[]>(`${environment.apiUrl}/sizes`)
   }
+
 }

@@ -46,22 +46,30 @@ export class PizzaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sizes = this.sizesService.getAllSizes();
+    //this.sizes = this.sizesService.getAllSizes();
+
+    this.sizesService.getSizes().subscribe((data: Size[]) => {
+      this.sizes = data;
+      console.log(this.sizes)
+    });
 
     this.toppingTypes = this.toppingTypesService.getToppingTypes();
 
-    this.toppings = this.topppingsService.getToppings();
+    this.topppingsService.getAll().subscribe((data: Topping[]) => {
+      this.toppings = data;
+      console.log(this.toppings)
+    });
   }
 
-  onToppingChange(event: Event, topping: any) {
+  onToppingChange(event: Event, topping: Topping) {
     const checkbox = event.target as HTMLInputElement;
     const toppingsArray = this.pizzaForm.get('toppings')
       ?.value as Array<string>;
 
     if (checkbox.checked) {
-      toppingsArray.push(topping.id);
+      toppingsArray.push(topping.code);
     } else {
-      const index = toppingsArray.indexOf(topping.id);
+      const index = toppingsArray.indexOf(topping.code);
       if (index > -1) {
         toppingsArray.splice(index, 1);
       }
@@ -73,7 +81,7 @@ export class PizzaComponent implements OnInit {
   resetPizzaForm() {
     this.pizzaForm.patchValue({
       size: null,
-      toppings: [[]]
+      toppings: [[]],
     });
     const checkboxes = document.querySelectorAll(
       '.pizza-topping-selector input[type="checkbox"]'
@@ -85,13 +93,13 @@ export class PizzaComponent implements OnInit {
   addPizzaToCart() {
     if (this.pizzaForm.valid) {
       let pizza: Pizza = {
-        size: this.sizes.find((s) => s.id == this.pizzaForm.value.size) as Size,
+        size: this.sizes.find((s) => s.code == this.pizzaForm.value.size) as Size,
         toppings: this.toppings.filter((t) =>
-          this.pizzaForm.value.toppings.includes(t.id)
+          this.pizzaForm.value.toppings.includes(t.code)
         ),
         price: 0,
         beforePrice: 0,
-        offer: ""
+        offer: '',
       };
       this.onAddPizzaToCart.emit(pizza);
       this.resetPizzaForm();

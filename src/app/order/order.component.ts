@@ -36,10 +36,13 @@ export class OrderComponent {
   toppings: Topping[] | undefined;
   constructor(private topppingsService: ToppingsService,){}
   ngOnInit(): void {    
-    this.toppings = this.topppingsService.getToppings();
-    this.toppings.forEach(topping => {
-      this.tableHeader.push({id: topping.id, data: topping.description });
-    });   
+    this.topppingsService.getAll().subscribe((data: Topping[]) => {
+      this.toppings = data;
+      this.toppings.forEach(topping => {
+        this.tableHeader.push({id: topping.code, data: topping.description });
+      }); 
+    })
+     
   }
 
   getDataForRow(pizza: Pizza): TableElement[]{

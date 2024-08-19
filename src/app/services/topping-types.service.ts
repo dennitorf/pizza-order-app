@@ -7,8 +7,8 @@ import { ToppingType } from '../models/topping-type';
 export class ToppingTypesService {
   
   private TOPPINGS_TYPES : ToppingType[] = [
-    { id : "veg", description : "Veg"},
-    { id : "non-veg", description : "Non Veg"},
+    { id: 1, code : "veg", description : "Veg"},
+    { id: 2, code : "non-veg", description : "Non Veg"},
     
   ]
 

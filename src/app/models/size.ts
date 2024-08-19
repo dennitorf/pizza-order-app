@@ -1,5 +1,6 @@
 export interface Size {
-    id : string; 
+    id : number; 
+    code: string;
     description : string; 
     price : number; 
 }
