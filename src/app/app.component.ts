@@ -27,23 +27,26 @@ export class AppComponent {
 
   onPizzaAddedToCart(e : Pizza) {
     this.cart.pizzas.push(e);
-    const offers = this.offersService.getApplicableOffers(this.cart.pizzas)
-    this.cart.offers = offers
 
-    this.cart.total = this
-      .cartService
-      .getTotal(this.cart.pizzas)
+    this.cart.pizzas = this.cartService.getPizzasPrice(this.cart.pizzas);
+
+    this.cart.pizzas = this.offersService.getApplicableOffers(this.cart.pizzas)    
+
+    this.cart.discount = this.cartService.getDiscount(this.cart.pizzas)
+
+    this.cart.total = this.cartService.getTotal(this.cart.pizzas) + this.cart.discount
     
-    const percentDiscount = this
-      .cartService
-      .getPercentDiscounts(this.cart.offers)
+    // const percentDiscount = this
+    //   .cartService
+    //   .getPercentDiscounts(this.cart.offers)
     
-    const discounts = this
-      .cartService  
-      .getDiscounts(this.cart.offers);
+    // const discounts = this
+    //   .cartService  
+    //   .getDiscounts(this.cart.offers);
       
-    this.cart.discount = discounts + (percentDiscount === 0 ? 0 : (this.cart.total / percentDiscount) * 100);
+    //this.cart.discount = discounts + (percentDiscount === 0 ? 0 : (this.cart.total / percentDiscount) * 100);
     this.cart.finalTotal = this.cart.total - this.cart.discount;
+    console.log(this.cart);
   }
 
   onPizzaRemovedFromCart(e : Event) {

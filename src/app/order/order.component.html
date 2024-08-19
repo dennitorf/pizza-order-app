@@ -1,1 +1,27 @@
-<p>order works!</p>
+<div>
+    <table>
+        <caption>{{ tableCaption }}</caption>
+        <thead>
+            <th *ngFor="let item of tableHeader">{{ item.data }}</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pizza of cart?.pizzas">
+                <th *ngFor="let item of getDataForRow(pizza)" [attr.id]="item.id" [innerHTML]="item.data"></th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="summary-container">
+    <div class="summary-item">
+        <label class="summary-label">Total:</label>
+        <span class="summary-value">{{cart?.total?.toFixed(2)}}</span>
+    </div>
+    <div class="summary-item">
+        <label class="summary-label">Discount:</label>
+        <span class="summary-value">{{cart?.discount?.toFixed(2)}}</span>
+    </div>
+    <div class="summary-item final-total">
+        <label class="summary-label">Final Total:</label>
+        <span class="summary-value">{{cart?.finalTotal?.toFixed(2)}}</span>
+    </div>
+</div>

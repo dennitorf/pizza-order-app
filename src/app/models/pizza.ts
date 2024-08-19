@@ -4,4 +4,7 @@ import { Topping } from "./topping";
 export interface Pizza {
     size : Size;
     toppings : Topping[];
+    price: number;
+    beforePrice: number;
+    offer: string;
 }
