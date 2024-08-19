@@ -31,19 +31,19 @@ export class OffersService {
     let mediumPizzaIndex = 0;
 
     pizzas.forEach((pizza, index) => {
-      if (pizza.size.id === 'medium' && pizza.toppings.length === 2) {
+      if (pizza.size.code === 'medium' && pizza.toppings.length === 2) {
         pizza.beforePrice = pizza.price;
         pizza.price = 5;
         pizza.offer = 'Offer 1';
       } else if (
-        pizza.size.id === 'large' &&
+        pizza.size.code === 'large' &&
         pizza.toppings.filter((t) => t.id === 'pep' || t.id === 'bbq')
           .length === 2
       ) {
         pizza.beforePrice = pizza.price;
         pizza.price = pizza.price * 0.5;
         pizza.offer = 'Offer 3';
-      } else if (pizza.size.id === 'medium' && pizza.toppings.length == 4) {
+      } else if (pizza.size.code === 'medium' && pizza.toppings.length == 4) {
         mediumPizzaCount++;
         if (mediumPizzaCount == 1){
            mediumPizzaIndex = index;

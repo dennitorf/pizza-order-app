@@ -11,8 +11,8 @@
         <div class="pizza-size-selector-container">
           <div class="pizza-size-selector">
             <ng-container *ngFor="let size of sizes">
-              <input type="radio" id="{{ size.id }}" formControlName="size" value="{{ size.id }}" />
-              <label for="{{ size.id }}">{{ size.description }} <br/> {{ size.price | currency: 'CAD' }}</label>
+              <input type="radio" id="{{ size.code }}" formControlName="size" value="{{ size.code }}" />
+              <label for="{{ size.code }}">{{ size.description }} <br/> {{ size.price | currency: 'CAD' }}</label>
             </ng-container>
           </div>
         </div>
@@ -24,8 +24,8 @@
         <div class="pizza-topping-selector-container">
           <div class="pizza-topping-selector">
             <ng-container *ngFor="let topping of toppings">
-              <input type="checkbox" id="{{ topping.id }}" (change)="onToppingChange($event, topping)" />
-              <label for="{{ topping.id }}" [ngClass]="{'veg': topping.toppingTypeId === 'veg', 'non-veg': topping.toppingTypeId === 'non-veg'}">
+              <input type="checkbox" id="{{ topping.code }}" (change)="onToppingChange($event, topping)" />
+              <label for="{{ topping.code }}" [ngClass]="{'veg': topping.toppingType.code === 'veg', 'non-veg': topping.toppingType.code === 'non-veg'}">
                 {{ topping.description }} <br/> {{ topping.price | currency: 'CAD' }}
               </label>
             </ng-container>

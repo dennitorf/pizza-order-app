@@ -1,8 +1,8 @@
 export const SIZE_DATA = [
-    { id : 'small', description : 'Small', price : 5 },
-    { id : 'medium', description : 'Medium', price : 7 },
-    { id : 'large', description : 'Large', price : 8 },
-    { id : 'extra-large', description : 'Extra Large', price : 9 }
+    { id: 1, code : 'small', description : 'Small', price : 5 },
+    { id: 1, code : 'medium', description : 'Medium', price : 7 },
+    { id: 1, code : 'large', description : 'Large', price : 8 },
+    { id: 1, code : 'extra-large', description : 'Extra Large', price : 9 }
   ]
 
   export const  TOPPINGS = [
